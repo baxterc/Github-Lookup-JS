@@ -8,9 +8,11 @@ Lookup.prototype.getRepos = function(username){
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
     console.log(response);
     $('#results').empty();
+    $('#user-image').empty();
+    $('#user-image').html("<img src='" + response[0].owner.avatar_url + "'>");
     for (i = 0; i < response.length ; i ++)
     {
-      var createDate = response[i]
+      var createDate = response[i];
       $('#results').append("<li><p>Project Name: " + response[i].name +
       "</p><p>Project Description: " + response[i].description +
       "</p><p>Project Created on " + dateConverter(response[i].created_at) +
@@ -18,9 +20,9 @@ Lookup.prototype.getRepos = function(username){
     }
   }).fail(function(error){
     console.log(error.responseJSON.message);
-    if (error.responseJSON.message = "Not Found") {
+    if (error.responseJSON.message === "Not Found") {
       $('#results').empty();
-      $('#results').html("<h3>Username Not Found</h3>")
+      $('#results').html("<h3>Username Not Found</h3>");
     }
 
   });
