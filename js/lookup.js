@@ -8,8 +8,6 @@ function Lookup() {
 Lookup.prototype.getRepos = function(username, page){
   $('#results').empty();
   $('#user-image').empty();
-  $('#user-full-name').empty();
-  $('#user-repo-number').empty();
   var usernameAccessString = "";
   var repoAccessString = "";
   //Logic check to see if the user has provided an API key; if so, it will be placed in two separate strings for use in the API calls below
@@ -17,6 +15,7 @@ Lookup.prototype.getRepos = function(username, page){
     usernameAccessString = '?access_token=' + apiKey;
     repoAccessString = '&access_token=' + apiKey;
   }
+  $('#results-heading').show();
 
   //Gets user info that is not included in the API call for the list of repositories.
   if (page === 1) {
@@ -36,14 +35,14 @@ Lookup.prototype.getRepos = function(username, page){
     {
       var description = "";
       if (response[i].description === "" || response[i].description === null) {
-        description = "<b>There is no description entered for this project!</b>";
+        description = "<span class = 'no-desc'>There is no description entered for this project!</span>";
         noDescCount ++;
       } else {
         description = response[i].description;
       }
       var createDate = response[i];
-      $('#results').append("<li><p>Project Name: <a href='" + response[i].svn_url + "'>" + response[i].name + "</a>" +
-      "</p><p>Project Description: " + description +
+      $('#results').append("<li><h3><a href='" + response[i].svn_url + "'>" + response[i].name + "</a>" +
+      "</h3><p>Project Description: " + description +
       "</p><p>Project Created on " + dateConverter(response[i].created_at) +
       "<hr>");
     }
@@ -51,19 +50,19 @@ Lookup.prototype.getRepos = function(username, page){
   //Rendering the next page button
   if (page * 30 < repos)
   {
-    $('#next-page-button').html("<button type='button' name='next-page' id='next-page'>Next Page</button>");
+    $('.next-page-button').html("<button type='button' name='next-page' id='next-page'>Next Page</button>");
   } else {
-    $('#next-page-button').empty();
+    $('.next-page-button').empty();
   }
 
   //Rendering the previous page button
   if (page <= 1 )
   {
-    $('#prev-page-button').empty();
+    $('.prev-page-button').empty();
   } else {
-    $('#prev-page-button').html("<button type='button' name='prev-page' id='prev-page'>Previous Page</button>");
+    $('.prev-page-button').html("<button type='button' name='prev-page' id='prev-page'>Previous Page</button>");
   }
-  $("#user-no-repo-desc").html("<h4>Repositories on this page without descriptions: " + noDescCount + " (30 repositories per page)</h4>");
+  $("#user-no-repo-desc").html("<h4>Repositories on this page without descriptions: " + noDescCount + " (30 repositories are listed per page)</h4>");
 
   //Error handling
   }).fail(function(error){
@@ -96,6 +95,7 @@ function emptyDivs() {
   $('#next-page-button').empty();
   $('#prev-page-button').empty();
   $('#user-no-repo-desc').empty();
+  $('#results-heading').hide();
 }
 
 exports.lookupModule = Lookup;

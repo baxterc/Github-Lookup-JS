@@ -1,0 +1,50 @@
+$lightblue: #D9F0FF;
+$darkblue: #83C9F4;
+
+body {
+  background: $lightblue;
+  font-family: 'Montserrat', sans-serif;
+}
+
+hr {
+  border: 1px solid $darkblue;
+}
+
+img {
+  width: 12%;
+  height: 12%;
+  float: left;
+  padding-right: 24px;
+}
+
+.jumbotron {
+  background: $darkblue;
+}
+
+.no-desc {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbtn {
+  padding-left: 32px;
+  padding-bottom: 16px;
+}
+
+.prev-page-button, .next-page-button {
+  display: inline-block;
+}
+
+#user-info {
+  display: inline;
+}
+
+#results-heading {
+  display: none;
+  padding-bottom: 16px;
+}
+
+#user-display {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}

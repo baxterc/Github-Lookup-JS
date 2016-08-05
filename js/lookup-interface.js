@@ -9,14 +9,14 @@ $(document).ready(function(event){
     var currentLookup = new Lookup();
     currentLookup.getRepos(user, page);
   });
-  $("#next-page-button").click(function() {
+  $(".next-page-button").click(function() {
     page ++;
     console.log(page);
     var user = $("#user-lookup").val();
     var nextLookup = new Lookup();
     nextLookup.getRepos(user, page);
   });
-  $("#prev-page-button").click(function() {
+  $(".prev-page-button").click(function() {
     page --;
     console.log(page);
     var user = $("#user-lookup").val();

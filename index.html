@@ -2,23 +2,37 @@
 <html>
   <head>
     <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>Github Lookup</title>
   </head>
   <body>
-    <input type="text" name="user-lookup" id="user-lookup">
-    <button type="button" name="button" id="test">Test</button>
+    <div id="main" class="container">
+      <div class="jumbotron">
+        <h1>Github Lookup</h1>
+        <p>Check out a Github user's repositories!</p>
+      </div>
 
-    <div id="next-page-button"></div>
-    <div id="prev-page-button"></div>
+      <input type="text" name="user-lookup" id="user-lookup">
+      <button type="button" name="button" id="test">Search</button>
 
-    <div id="user-image"></div>
-    <div id="user-full-name"></div>
-    <div id="user-repo-number"></div>
-    <div id="user-no-repo-desc"></div>
-    <ul id="results">
-
-    </ul>
+      <div class="next-page-button navbtn"></div>
+      <div class="prev-page-button navbtn"></div>
+      <div id="user-display">
+        <div id="user-image"></div>
+        <div id="user-details">
+          <div id="user-full-name"></div>
+          <div id="user-repo-number"></div>
+          <div id="user-no-repo-desc"></div>
+        </div>
+      </div>
+      <div id="results-heading"><h3>Repositories By This User:</h3> </div>
+      <ul id="results">
+      </ul>
+      <div class="next-page-button navbtn"></div>
+      <div class="prev-page-button navbtn"></div>
+    </div>
   </body>
 </html>
