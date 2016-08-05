@@ -21,7 +21,7 @@ Lookup.prototype.getRepos = function(username){
     for (i = 0; i < response.length ; i ++)
     {
       var createDate = response[i];
-      $('#results').append("<li><p>Project Name: " + response[i].name +
+      $('#results').append("<li><p>Project Name: <a href='" + response[i].svn_url + "'>" + response[i].name + "</a>" +
       "</p><p>Project Description: " + response[i].description +
       "</p><p>Project Created on " + dateConverter(response[i].created_at) +
       "<hr>");
