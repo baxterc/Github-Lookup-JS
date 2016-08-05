@@ -2,7 +2,6 @@ var Lookup = require('./../js/lookup.js').lookupModule;
 var page = 0;
 
 $(document).ready(function(event){
-  event.preventDefault;
 
   $("#test").click(function() {
     page = 1;
