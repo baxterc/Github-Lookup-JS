@@ -18,6 +18,11 @@ Lookup.prototype.getRepos = function(username){
     }
   }).fail(function(error){
     console.log(error.responseJSON.message);
+    if (error.responseJSON.message = "Not Found") {
+      $('#results').empty();
+      $('#results').html("<h3>Username Not Found</h3>")
+    }
+
   });
 };
 
