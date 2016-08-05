@@ -17,4 +17,11 @@ $(document).ready(function(event){
     var nextLookup = new Lookup();
     nextLookup.getRepos(user, page);
   });
+  $("#prev-page-button").click(function() {
+    page --;
+    console.log(page);
+    var user = $("#user-lookup").val();
+    var nextLookup = new Lookup();
+    nextLookup.getRepos(user, page);
+  });
 });

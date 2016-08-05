@@ -42,11 +42,18 @@ Lookup.prototype.getRepos = function(username, page){
   if (page * 30 < repos)
   {
     $('#next-page-button').html("<button type='button' name='next-page' id='next-page'>Next Page</button>");
-  } else if (page * 30 >= repos){
-    $('#next-page-button').html("");
+  } else {
+    $('#next-page-button').empty();
   }
 
-  $("#user-no-repo-desc").html("<h4>Repositories on this page without descriptions: " + noDescCount + "</h4>");
+  if (page <= 1 )
+  {
+    $('#prev-page-button').empty();
+  } else {
+    $('#prev-page-button').html("<button type='button' name='prev-page' id='prev-page'>Previous Page</button>");
+  }
+
+  $("#user-no-repo-desc").html("<h4>Repositories on this page without descriptions: " + noDescCount + " (30 repositories per page)</h4>");
   }).fail(function(error){
     console.log(error.responseJSON.message);
     if (error.responseJSON.message === "Not Found") {
