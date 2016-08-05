@@ -5,10 +5,12 @@ function Lookup() {
 }
 
 Lookup.prototype.getRepos = function(username){
-  $.get('https://api.github.com/users/' + username).then(function(usernameResponse){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(usernameResponse){
     console.log(usernameResponse);
     $('#user-full-name').empty();
-    $("#user-full-name").html("<h3>" + usernameResponse.name + "</h3>");
+    $('#user-repo-number').empty();
+    $("#user-full-name").html("<a href=http://www.github.com/" + username+ "><h3>" + usernameResponse.name + "</h3></a>");
+    $("#user-repo-number").html("<h4>Total Number of Repositories: " + usernameResponse.public_repos + "</h4>");
   });
   $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
     console.log(response);
