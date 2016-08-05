@@ -106,3 +106,5 @@ gulp.task('cssBuild', function() {
     .pipe(gulp.dest('./build/css'))
     .pipe(browserSync.stream());
 });
+
+gulp.task('lookup', ['build', 'serve']);
