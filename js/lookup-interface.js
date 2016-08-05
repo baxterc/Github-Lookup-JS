@@ -1,9 +1,20 @@
 var Lookup = require('./../js/lookup.js').lookupModule;
+var page = 0;
 
-$(document).ready(function(){
+$(document).ready(function(event){
+  event.preventDefault;
+
   $("#test").click(function() {
+    page = 1;
     var user = $("#user-lookup").val();
     var currentLookup = new Lookup();
-    currentLookup.getRepos(user);
+    currentLookup.getRepos(user, page);
+  });
+  $("#next-page-button").click(function() {
+    page ++;
+    console.log(page);
+    var user = $("#user-lookup").val();
+    var nextLookup = new Lookup();
+    nextLookup.getRepos(user, page);
   });
 });
