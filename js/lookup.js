@@ -20,9 +20,15 @@ Lookup.prototype.getRepos = function(username){
 
     for (i = 0; i < response.length ; i ++)
     {
+      var description = ""
+      if (response[i].description === "" || response[i].description === null) {
+        description = "<b>There is no description entered for this project!</b>"
+      } else {
+        description = response[i].description;
+      }
       var createDate = response[i];
       $('#results').append("<li><p>Project Name: <a href='" + response[i].svn_url + "'>" + response[i].name + "</a>" +
-      "</p><p>Project Description: " + response[i].description +
+      "</p><p>Project Description: " + description +
       "</p><p>Project Created on " + dateConverter(response[i].created_at) +
       "<hr>");
     }
