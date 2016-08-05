@@ -20,7 +20,7 @@ Lookup.prototype.getRepos = function(username, page){
   //Gets user info that is not included in the API call for the list of repositories.
   if (page === 1) {
     $.get('https://api.github.com/users/' + username + usernameAccessString).then(function(usernameResponse){
-      $("#user-full-name").html("<a href=http://www.github.com/" + username+ "><h3>" + usernameResponse.name + "</h3></a>");
+      $("#user-full-name").html("<a href=http://www.github.com/" + username+ " target='_blank'><h3>" + usernameResponse.name + "</h3></a>");
       $("#user-repo-number").html("<h4>Total Number of Repositories: " + usernameResponse.public_repos + "</h4>");
       repos = usernameResponse.public_repos;
     });
@@ -41,7 +41,7 @@ Lookup.prototype.getRepos = function(username, page){
         description = response[i].description;
       }
       var createDate = response[i];
-      $('#results').append("<li><h3><a href='" + response[i].svn_url + "'>" + response[i].name + "</a>" +
+      $('#results').append("<li><h3><a href='" + response[i].svn_url + "' target='_blank'>" + response[i].name + "</a>" +
       "</h3><p>Project Description: " + description +
       "</p><p>Project Created on " + dateConverter(response[i].created_at) +
       "<hr>");
